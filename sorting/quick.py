@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import random
+
 class Quick(object):
     """docstring for Quick: standard & 3way"""
     def sort(self, a, type="standard"):
@@ -88,7 +90,6 @@ class Quick(object):
         return True
 
 if __name__ == '__main__':
-    import random
     a = range(10)
     random.shuffle(a)
     print a
