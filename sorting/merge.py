@@ -9,7 +9,7 @@ class Merge(object):
         elif type == "BU":
             self.__sortBU(a, 0, len(a)-1)
         else:
-            print "Error"
+            print "Type error"
 
     def __sortTD(self, a, lo, hi):
         if hi <= lo:

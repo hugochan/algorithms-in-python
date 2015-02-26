@@ -11,7 +11,7 @@ class Quick(object):
         elif type == "3way":
             self.__sort3(a, 0, len(a)-1)
         else:
-            print "Error"
+            print "Type error"
 
     def __sort(self, a, lo, hi):
         if hi <= lo:
