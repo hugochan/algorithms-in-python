@@ -42,5 +42,5 @@ if __name__ == '__main__':
     print a
     s = Heap()
     s.sort(a)
-    print a
     print s.isSorted(a)
+    print a

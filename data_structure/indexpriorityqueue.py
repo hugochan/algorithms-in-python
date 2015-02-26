@@ -97,13 +97,10 @@ if __name__ == '__main__':
     for each_k, each_key in _dict.items():
         impq.insert(each_k, each_key)
     impq.show()
-    
     impq.change(4, 99)
     impq.show()
-
     for i in range(5):
         print impq.delMax()
-    
     impq.show()
     print impq.constains(9)
     impq.delete(0)
