@@ -27,12 +27,11 @@ class Quick(object):
         self.__sort3(a, lo, lt-1)
         self.__sort3(a, gt+1, hi)
 
-
     def __partition(self, a, lo, hi):
         i = lo
         j = hi + 1
         v = a[lo]# partition element
-        while True:
+        while 1:
             while self.__less(a[i+1], v):
                 i += 1
                 if i == hi:
@@ -79,12 +78,10 @@ class Quick(object):
             return 0
 
     def __exch(self, a, i, j):
-        t = a[i] # to be generalized
-        a[i] = a[j]
-        a[j] = t
+        a[i], a[j] = a[j], a[i]
 
     def isSorted(self, a):
-        for i in range(1, len(a)):
+        for i in xrange(1, len(a)):
             if self.__less(a[i], a[i-1]):
                 return False
         return True

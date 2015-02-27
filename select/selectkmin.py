@@ -24,7 +24,7 @@ class SelectKMin(object):
         i = lo
         j = hi + 1
         v = a[lo]# partition element
-        while True:
+        while 1:
             while self.__less(a[i+1], v):
                 i += 1
                 if i == hi:
@@ -45,9 +45,7 @@ class SelectKMin(object):
         return v < w # to be generalized
 
     def __exch(self, a, i, j):
-        t = a[i] # to be generalized
-        a[i] = a[j]
-        a[j] = t
+        a[i], a[j] = a[j], a[i]
 
 if __name__ == '__main__':
     a = range(10)
@@ -55,4 +53,3 @@ if __name__ == '__main__':
     print a
     skm = SelectKMin()
     print skm.select(a, 3)
-    

@@ -8,8 +8,8 @@ class Shell(object):
         while h < N/3:
             h = 3*h + 1
         while h >= 1:
-            for i in range(h, N):
-                for j in range(i, h-1, -h):
+            for i in xrange(h, N):
+                for j in xrange(i, h-1, -h):
                     if self.__less(a[j], a[j-h]):
                         self.__exch(a, j, j-h)
                     else:
@@ -21,12 +21,10 @@ class Shell(object):
         return v < w # to be generialized
 
     def __exch(self, a, i, j):
-        t = a[i] # to be generalized
-        a[i] = a[j]
-        a[j] = t
+        a[i], a[j] = a[j], a[i]
 
     def isSorted(self, a):
-        for i in range(1, len(a)):
+        for i in xrange(1, len(a)):
             if self.__less(a[i], a[i-1]):
                 return False
         return True

@@ -4,9 +4,9 @@ class Selection(object):
     """docstring for Selection"""
     def sort(self, a):
         N = len(a)
-        for i in range(N):
+        for i in xrange(N):
             _min = i
-            for j in range(i+1, N):
+            for j in xrange(i+1, N):
                 if self.__less(a[j], a[_min]):
                     _min = j
             self.__exch(a, i, _min)
@@ -15,12 +15,10 @@ class Selection(object):
         return v < w # to be generialized
 
     def __exch(self, a, i, j):
-        t = a[i] # to be generalized
-        a[i] = a[j]
-        a[j] = t
+        a[i], a[j] = a[j], a[i]
 
     def isSorted(self, a):
-        for i in range(1, len(a)):
+        for i in xrange(1, len(a)):
             if self.__less(a[i], a[i-1]):
                 return False
         return True

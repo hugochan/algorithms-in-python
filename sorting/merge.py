@@ -23,7 +23,7 @@ class Merge(object):
         N = len(a)
         sz = 1
         while sz < N:
-            for lo in range(0, N-sz, sz+sz):
+            for lo in xrange(0, N-sz, sz+sz):
                 self.__merge(a, lo, lo+sz-1, min(lo+sz+sz-1, N-1))
             sz = sz + sz
 
@@ -31,7 +31,7 @@ class Merge(object):
         i = lo
         j = mid + 1
         aux = a[:]
-        for k in range(lo, hi+1):
+        for k in xrange(lo, hi+1):
             if i > mid:
                 a[k] = aux[j]
                 j += 1
@@ -49,12 +49,10 @@ class Merge(object):
         return v < w # to be generalized
 
     def __exch(self, a, i, j):
-        t = a[i] # to be generalized
-        a[i] = a[j]
-        a[j] = t
+        a[i], a[j] = a[j], a[i]
 
     def isSorted(self, a):
-        for i in range(1, len(a)):
+        for i in xrange(1, len(a)):
             if self.__less(a[i], a[i-1]):
                 return False
         return True

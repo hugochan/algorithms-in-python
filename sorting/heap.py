@@ -4,7 +4,7 @@ class Heap(object):
     """docstring for Heap"""
     def sort(self, a):
         N = len(a)
-        for i in range(N/2, 0, -1):
+        for i in xrange(N/2, 0, -1):
             self.__sink(a, i, N)
         while N > 1:
             self.__exch(a, 1, N)
@@ -25,12 +25,10 @@ class Heap(object):
         return a[i-1] < a[j-1] # to be generalized
 
     def __exch(self, a, i, j):
-        t = a[i-1] # to be generalized
-        a[i-1] = a[j-1]
-        a[j-1] = t
+        a[i-1], a[j-1] = a[j-1], a[i-1]
 
     def isSorted(self, a):
-        for i in range(1, len(a)):
+        for i in xrange(1, len(a)):
             if self.__less(a, i+1, i):
                 return False
         return True

@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from collections import deque
+
 class MaxPQ(object):
     """docstring for resizing MaxPQ"""
     def __init__(self):
-        self.__pq = [0]
+        self.__pq = deque([0])
 
     def isEmpty(self):
         return len(self.__pq) - 1 == 0
@@ -23,7 +25,7 @@ class MaxPQ(object):
         return _max
 
     def show(self):
-        for i in range(1, self.size()+1):
+        for i in xrange(1, self.size()+1):
             print self.__pq[i]
 
     def __swim(self, k):
@@ -46,9 +48,7 @@ class MaxPQ(object):
         return self.__pq[i] < self.__pq[j] # to be generalized
 
     def __exch(self, i, j):
-        t = self.__pq[i] # to be generalized
-        self.__pq[i] = self.__pq[j]
-        self.__pq[j] = t
+        self.__pq[i], self.__pq[j] = self.__pq[j], self.__pq[i]
 
 if __name__ == '__main__':
     import random

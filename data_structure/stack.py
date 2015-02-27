@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from collections import deque
+
 class Stack(object):
     """docstring for Resizing Stack"""
     def __init__(self):
-        self.__stack = []
+        self.__stack = deque([])
 
     def isEmpty(self):
         return len(self.__stack) == 0
@@ -15,12 +17,10 @@ class Stack(object):
         self.__stack.append(item)
 
     def pop(self):
-        item = self.__stack[-1]
-        del self.__stack[-1]
-        return item
+        return self.__stack.pop()
 
     def show(self):
-        for i in range(self.size()):
+        for i in xrange(self.size()):
             print self.__stack[i]
 
 if __name__ == '__main__':

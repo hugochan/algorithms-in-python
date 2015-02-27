@@ -3,9 +3,9 @@
 class IndexMaxPQ(object):
     """docstring for resizing IndexMaxPQ"""
     def __init__(self):
-        self.__pq = [0] # store indices
-        # self.__qp = {} # store {index:sequence num}
-        self.__keys = {} # store elements
+        self.__pq = [0] # store indices (k)
+        self.__qp = {None:0} # store {index:sequence num}
+        self.__keys = {} # store {index:element}
 
     def isEmpty(self):
         return len(self.__pq) - 1 == 0
@@ -14,17 +14,19 @@ class IndexMaxPQ(object):
         return len(self.__pq) - 1
 
     def constains(self, k):
-        return k in self.__pq[1:]
+        return k in self.__qp
 
     def insert(self, k, key):
         self.__pq.append(k)
+        N = self.size()
+        self.__qp[k] = N
         self.__keys[k] = key
-        self.__swim(self.size())
+        self.__swim(N)
 
     def change(self, k, key):
         self.__keys[k] = key
         try:
-            t = self.__pq[1:].index(k) + 1
+            t = self.__qp[k]
         except ValueError:
             print "Change error"
         else:
@@ -33,12 +35,13 @@ class IndexMaxPQ(object):
 
     def delete(self, k):
         try:
-            t = self.__pq[1:].index(k) + 1
+            t = self.__qp[k]
         except ValueError:
             print "Change error"
         else:
             self.__exch(t, self.size())
             del self.__pq[-1]
+            del self.__qp[k]
             del self.__keys[k]
             self.__swim(t)
             self.__sink(t)
@@ -53,6 +56,7 @@ class IndexMaxPQ(object):
         indexOfMax = self.__pq[1]
         self.__exch(1, self.size())
         del self.__pq[-1]
+        del self.__qp[indexOfMax]
         del self.__keys[indexOfMax]
         self.__sink(1)
         return indexOfMax
@@ -81,9 +85,8 @@ class IndexMaxPQ(object):
         return self.__keys[self.__pq[i]] < self.__keys[self.__pq[j]] # to be generalized
 
     def __exch(self, i, j):
-        t = self.__pq[i] # to be generalized
-        self.__pq[i] = self.__pq[j]
-        self.__pq[j] = t
+        self.__pq[i], self.__pq[j] = self.__pq[j], self.__pq[i]
+        self.__qp[self.__pq[i]], self.__qp[self.__pq[j]] = i, j
 
 if __name__ == '__main__':
     import random
@@ -99,11 +102,11 @@ if __name__ == '__main__':
     impq.show()
     impq.change(4, 99)
     impq.show()
+    impq.delete(0)
+    impq.show()
     for i in range(5):
         print impq.delMax()
     impq.show()
     print impq.constains(9)
-    impq.delete(0)
-    impq.show()
     print impq.max()
     print impq.maxIndex()

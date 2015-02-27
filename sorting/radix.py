@@ -19,17 +19,17 @@ class Radix(object):
             print "Type error"
 
     def __sortLSD(self, a, radix, K):
-        self.__bucket = [[] for i in range(radix)] # not [[]]*radix
-        for i in range(1, K+1):
+        self.__bucket = [[] for i in xrange(radix)] # not [[]]*radix
+        for i in xrange(1, K+1):
             for val in a:
                 self.__bucket[val%(radix**i)/(radix**(i-1))].append(val)
             del a[:]
             for each in self.__bucket:
                 a.extend(each)
-            self.__bucket = [[] for i in range(radix)]
+            self.__bucket = [[] for i in xrange(radix)]
 
     def __sortMSD(self, a, radix, K):# cost much space
-        self.__bucket = [[] for i in range(radix)] # not [[]]*radix
+        self.__bucket = [[] for i in xrange(radix)] # not [[]]*radix
         if len(a) <= 1:
             self.__a.append(a[0])
             return a
@@ -41,11 +41,7 @@ class Radix(object):
                 self.__sortMSD(each, radix, K-1)
 
     def __max(self, a):
-        t = a[0]
-        for val in a:
-            if t < val:
-                t = val
-        return t
+        return max(a)
 
 # flat=lambda L: sum(map(flat,L),[]) if isinstance(L,list) else [L] 
 
