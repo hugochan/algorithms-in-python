@@ -25,19 +25,17 @@ class IndexMaxPQ(object):
 
     def change(self, k, key):
         self.__keys[k] = key
-        try:
-            t = self.__qp[k]
-        except ValueError:
-            print "Change error"
+        t = self.__qp.get(k)
+        if t is None:
+            print "Change Error"
         else:
             self.__swim(t)
             self.__sink(t)
 
     def delete(self, k):
-        try:
-            t = self.__qp[k]
-        except ValueError:
-            print "Change error"
+        t = self.__qp.get(k)
+        if t is None:
+            print "Change Error"
         else:
             self.__exch(t, self.size())
             del self.__pq[-1]
