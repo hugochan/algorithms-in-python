@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 class IndexMaxPQ(object):
-    """docstring for resizing IndexMaxPQ"""
+    """docstring for resizing IndexMaxPQ:
+    does not support repeated indices (k)
+    """
     def __init__(self):
         self.__pq = [0] # store indices (k)
         self.__qp = {None:0} # store {index:sequence num}
