@@ -30,12 +30,8 @@ class BinarySearchST(object):
         if i < N and self.__compare(self.__keys[i], key) is 0:
             self.__vals[i] = val
             return None
-        self.__keys.append(0) # expand the list
-        self.__vals.append(0)
-        self.__keys[i+1:N+1] = self.__keys[i:N] # shifting
-        self.__vals[i+1:N+1] = self.__vals[i:N]
-        self.__keys[i], self.__vals[i] = key, val
-
+        self.__keys.insert(i, key) # computation complexity: O(N)
+        self.__vals.insert(i, val)
 
     def delete(self, key):
         """delete a key-value"""
