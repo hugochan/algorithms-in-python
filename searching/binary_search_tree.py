@@ -14,6 +14,8 @@ class BinarySearchTree(object):
     def __init__(self):
         self.__root = None
         
+    def isEmpty(self):
+        return self.size() is 0
 
     def size(self):
         return self.__size(self.__root)
@@ -24,17 +26,22 @@ class BinarySearchTree(object):
         else:
             return x.N
 
+    def contains(self, key):
+        return self.get(key) is not None
+
     def get(self, key):
-        x = self.__root
-        while x is not None:
-            _cmp = self.__compare(key, x.key)            
-            if _cmp == 0:
-                return x.val
-            elif _cmp < 0:
-                x = x.left
-            else:
-                x = x.right
-        return None
+        return self.__get(self.__root, key)
+
+    def __get(self, x, key):
+        if x is None:
+            return None
+        _cmp = self.__compare(key, x.key)
+        if _cmp < 0:
+            return self.__get(x.left, key)
+        elif _cmp > 0:
+            return self.__get(x.right, key)
+        else:
+            return x.val
 
     def put(self, key, val):
         self.__root = self.__put(self.__root, key, val)
@@ -198,7 +205,7 @@ class BinarySearchTree(object):
         cmphi = self.__compare(hi, x.key)
         if cmplo < 0:
             self.__keys(x.left, queue, lo, hi)
-        if cmplo <= 0 and cmphi >= 0:
+        if cmplo <= 0 <= cmphi:
             queue.append(x.key)
         if cmphi > 0:
             self.__keys(x.right, queue, lo, hi)
@@ -212,7 +219,7 @@ class BinarySearchTree(object):
             return None
         self.__print(x.left)
         print x.key
-        self.__print(x.right)             
+        self.__print(x.right)           
 
     def __compare(self, v, w):
         if v < w: # to be generalized
@@ -243,3 +250,6 @@ if __name__ == '__main__':
     bst.show()
     print bst.keys()
     print bst.keys(7, 9)
+    print bst.get(0)
+    print bst.contains(0)
+    print bst.isEmpty()
