@@ -29,6 +29,21 @@ class SequentialSearchST(object):
             x = x.next
         self.__first = Node(key, val, self.__first)
 
+    def delete(self, key):
+        x = self.__first
+        tmp = None
+        while x is not None:
+            if self.__compare(key, x.key) is 0:
+                if x is not self.__first:
+                    tmp.next = x.next
+                    x.next = None
+                else:
+                    self.__first = x.next
+                    x.next = None
+                return None
+            tmp = x
+            x = x.next
+
     def show(self):
         """print the ST"""
         x = self.__first
@@ -57,3 +72,5 @@ if __name__ == '__main__':
     st.show()
     for i in xrange(9, -1, -1):
         print keys[i], st.get(keys[i])
+    st.delete(keys[9])
+    print st.get(keys[9])
