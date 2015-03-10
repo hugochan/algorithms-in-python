@@ -16,6 +16,9 @@ class SeparateChainingHashST(object):
     def put(self, key, val):
         self.st[self.__hash(key)].put(key, val)
 
+    def delete(self, key):
+        self.st[self.__hash(key)].delete(key)
+
     def __hash(self, key):
         return (hash(key) & 0x7fffffff) % self.__M
 
@@ -31,3 +34,5 @@ if __name__ == '__main__':
         st.put(keys[i], vals[i])
     for i in xrange(9, -1, -1):
         print keys[i], st.get(keys[i])
+    st.delete(keys[0])
+    print st.get(keys[0])
