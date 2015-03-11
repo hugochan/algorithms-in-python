@@ -11,6 +11,7 @@ class SequentialSearchST(object):
     """docstring for SequentialSearchST"""
     def __init__(self):
         self.first = None
+        self.__N = 0
 
     def get(self, key):
         x = self.first
@@ -25,9 +26,11 @@ class SequentialSearchST(object):
         while x is not None:
             if self.__compare(key, x.key) is 0:
                 x.val = val
-                return None
+                return False # change
             x = x.next
         self.first = Node(key, val, self.first)
+        self.__N += 1
+        return True # add
 
     def delete(self, key):
         x = self.first
@@ -40,9 +43,14 @@ class SequentialSearchST(object):
                 else:
                     self.first = x.next
                     x.next = None
-                return None
+                self.__N -= 1
+                return True # delete successfully
             tmp = x
             x = x.next
+        return False # fail to delete
+
+    def size(self):
+        return self.__N
 
     def show(self):
         """print the ST"""
@@ -74,3 +82,4 @@ if __name__ == '__main__':
         print keys[i], st.get(keys[i])
     st.delete(keys[9])
     print st.get(keys[9])
+    print st.size()
