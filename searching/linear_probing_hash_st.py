@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from data import array
+import math
+
 class LinearProbingHashST(object):
     """docstring for LinearProbingHashST"""
     def __init__(self, M=16):
@@ -54,7 +57,11 @@ class LinearProbingHashST(object):
         return self.get(key) is not None
 
     def __hash(self, key):
-        return (hash(key) & 0x7fffffff) % self.M
+        # return (hash(key) & 0x7fffffff) % self.M
+        t = hash(key) & 0x7fffffff
+        if math.log(self.M, 2) < 26:
+            t = t % array[int(math.log(self.M, 2))+5]
+        return t % self.M
 
     def __resize(self, cap):
         t = LinearProbingHashST(cap)
@@ -87,5 +94,5 @@ if __name__ == '__main__':
         st.put(keys[i], vals[i])
     for i in xrange(9, -1, -1):
         print keys[i], st.get(keys[i])
-    # st.delete(keys[9])
+    st.delete(keys[9])
     print st.get(keys[9])

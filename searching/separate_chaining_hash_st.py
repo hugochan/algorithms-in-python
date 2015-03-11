@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 from sequential_search_st import SequentialSearchST as ssst
+from data import array
+import math
 
 class SeparateChainingHashST(object):
     """docstring for SeparateChainingHashST"""
@@ -37,7 +39,11 @@ class SeparateChainingHashST(object):
                 x = x.next
 
     def __hash(self, key):
-        return (hash(key) & 0x7fffffff) % self.M
+        # return (hash(key) & 0x7fffffff) % self.M
+        t = hash(key) & 0x7fffffff
+        if math.log(self.M, 2) < 26:
+            t = t % array[int(math.log(self.M, 2))+5]
+        return t % self.M
 
     def __resize(self, cap):
         t = SeparateChainingHashST(cap)
