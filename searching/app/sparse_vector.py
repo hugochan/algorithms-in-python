@@ -6,8 +6,9 @@ from linear_probing_hash_st import LinearProbingHashST as HashST
 
 class SparseVector(object):
     """docstring for SparseVector"""
-    def __init__(self):
+    def __init__(self, N): # N is the number of elements including zeors
         self.__st = HashST()
+        self.__N = N
 
     def size(self):
         return st.size()
@@ -23,14 +24,13 @@ class SparseVector(object):
 
     def dot(self, that):
         result = 0.0 
-        for i in self.__st.keys:
-            if i is not None:
-                result += that.get(i) * self.get(i)
+        for i in self.__st._keys():
+            result += that.get(i) * self.get(i)
         return result
 
     def plus(self, that):
-        result = SparseVector()
-        index = set(self.__st.keys) | set(that.__st.keys)
+        result = SparseVector(self.__N)
+        index = set(self.__st._keys()) | set(that.__st._keys())
         for i in index:
             tmp = self.get(i) + that.get(i)
             if tmp is not 0:
@@ -38,8 +38,8 @@ class SparseVector(object):
         return result
 
     def minus(self, that):
-        result = SparseVector()
-        index = set(self.__st.keys) | set(that.__st.keys)
+        result = SparseVector(self.__N)
+        index = set(self.__st._keys()) | set(that.__st._keys())
         for i in index:
             tmp = self.get(i) - that.get(i)
             if tmp is not 0:
@@ -48,17 +48,14 @@ class SparseVector(object):
 
     def show(self):
         print '[',
-        for i in self.__st.keys:
-            if i is None:
-                print 0.0,
-            else:
-                print self.get(i),
+        for i in range(self.__N):
+            print self.get(i),
         print ']'
 
 if __name__ == '__main__':
     import random
     a = range(10)
-    sv = SparseVector()
+    sv = SparseVector(10)
     index = range(10)
     index = random.sample(index, 5)
     print index
