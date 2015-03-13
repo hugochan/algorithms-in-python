@@ -59,6 +59,13 @@ class LinearProbingHashST(object):
     def size(self):
         return self.__N
 
+    def _keys(self):
+        keys = []
+        for i in self.keys:
+            if i is not None:
+                keys.append(i)
+        return keys
+
     def show(self):
         for i in self.keys:
             if i is not None:
@@ -106,3 +113,4 @@ if __name__ == '__main__':
     print st.get(keys[9])
     print st.size()
     st.show()
+    print st._keys()
