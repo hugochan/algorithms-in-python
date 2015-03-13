@@ -2,3 +2,4 @@ to be improved:
     indexpriorityqueue.py:(cost too much space, self.__qp) 
     radix.py:(cost too much space, self.__bucket)
     binary_search_tree.py:(fail to use nested class, Node)
+    "":(iterator to be implemented for some data structures)
