@@ -22,22 +22,48 @@ class SparseVector(object):
             return self.__st.get(i)
 
     def dot(self, that):
-        _sum = 0.0 
-        _type = type(that)
-        if _type is type([]): # list
-            for i in self.__st.keys:
-                if i is not None:
-                    _sum += that[i]*self.get(i)
-        return _sum
+        result = 0.0 
+        for i in self.__st.keys:
+            if i is not None:
+                result += that.get(i) * self.get(i)
+        return result
+
+    def plus(self, that):
+        result = SparseVector()
+        index = set(self.__st.keys) | set(that.__st.keys)
+        for i in index:
+            tmp = self.get(i) + that.get(i)
+            if tmp is not 0:
+                result.put(i, tmp)
+        return result
+
+    def minus(self, that):
+        result = SparseVector()
+        index = set(self.__st.keys) | set(that.__st.keys)
+        for i in index:
+            tmp = self.get(i) - that.get(i)
+            if tmp is not 0:
+                result.put(i, tmp)
+        return result
+
+    def show(self):
+        print '[',
+        for i in self.__st.keys:
+            if i is None:
+                print 0.0,
+            else:
+                print self.get(i),
+        print ']'
 
 if __name__ == '__main__':
     import random
-    a = range(10) # [0,1,2,3,4,5,6,7,8,9]
-    b = range(10)
+    a = range(10)
     sv = SparseVector()
     index = range(10)
     index = random.sample(index, 5)
     print index
     for i in index:
-        sv.put(i, b[i])
-    print sv.dot(a)
+        sv.put(i, a[i])
+    print sv.dot(sv)
+    sv.plus(sv).show()
+    sv.minus(sv).show()
