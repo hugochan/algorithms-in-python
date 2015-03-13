@@ -31,6 +31,15 @@ class SeparateChainingHashST(object):
     def size(self):
         return self.__N
 
+    def keys(self):
+        keys = []
+        for i in xrange(0, self.M):
+            x = self.st[i].first
+            while x is not None:
+                keys.append(x.key)
+                x = x.next
+        return keys
+
     def show(self):
         for i in xrange(0, self.M):
             x = self.st[i].first
@@ -71,3 +80,4 @@ if __name__ == '__main__':
     st.delete(keys[0])
     print st.get(keys[0])
     print st.size()
+    print st.keys()
