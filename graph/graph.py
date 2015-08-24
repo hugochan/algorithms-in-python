@@ -27,10 +27,10 @@ class Graph(object):
         self.adj[w].append(v)
         self.E += 1
 
-    def V(self):
+    def Vcount(self):
         return self.V
 
-    def E(self):
+    def Ecount(self):
         return self.E
 
     def get_adj(self, v):
@@ -73,3 +73,4 @@ if __name__ == '__main__':
     print g.avg_degree()
     print g.number_of_selfloops()
     print g.to_string()
+
