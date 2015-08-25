@@ -18,10 +18,10 @@ class DepthFirstPath(object):
                 self.edgeTo[w] = v
                 self.dfs(G, w)
 
-    def marked(self, v):
+    def is_marked(self, v):
         return self.marked[v]
 
-    def count(self):
+    def get_count(self):
         return self.count
 
     def has_path_to(self, v):
