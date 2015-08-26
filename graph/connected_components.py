@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 class CC(object):
-    """docstring for CC"""
+    """Connected components using depth first search"""
     def __init__(self, G):
         super(CC, self).__init__()
         self.marked = [0 for i in xrange(G.Vcount())]
