@@ -15,10 +15,10 @@ class DepthFirstSearch(object):
             if not self.marked[w]:
                 self.dfs(G, w)
 
-    def marked(self, v):
+    def ismarked(self, v):
         return self.marked[v]
 
-    def count(self):
+    def get_count(self):
         return self.count
 
 if __name__ == '__main__':
