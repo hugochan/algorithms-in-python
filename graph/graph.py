@@ -21,6 +21,7 @@ class Graph(object):
         except Exception, e:
             print e
             assert False
+        f.close()
 
     def add_edge(self, v, w):
         self.adj[v].append(w)
