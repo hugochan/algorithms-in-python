@@ -1,4 +1,4 @@
 ﻿algorithms in python
 =========
 
-Algorithm study notes
+Study notes of Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.
