@@ -50,6 +50,44 @@ class MaxPQ(object):
     def __exch(self, i, j):
         self.__pq[i], self.__pq[j] = self.__pq[j], self.__pq[i]
 
+class MinPQ(object):
+    """minimal priority queue"""
+    def __init__(self):
+        self.__pq = deque([0])
+
+    def isEmpty(self):
+        return len(self.__pq) - 1 == 0
+
+    def size(self):
+        return len(self.__pq) - 1
+
+    def insert(self, v):
+        self.__pq.append(v)
+        self.__swim(self.size())
+
+    def delMin(self):
+        _min = self.__pq[1]
+        self.__exch(1, self.size())
+        del self.__pq[-1]
+        self.__sink(1)
+        return _min
+
+    def show(self):
+        for i in xrange(1, self.size()+1):
+            print self.__pq[i]
+
+    def __swim(self, k):
+        while k > 1 and self.__more(k/2, k):
+            self.__exch(k/2, k)
+            k = k/2
+
+    def __sink(self, k):
+        N = self.size()
+        while 2*k <= N:
+            j = 2*k
+            if j < N and self.__more(j, j+1):
+                j += 1
+
 if __name__ == '__main__':
     import random
     maxN = 10
