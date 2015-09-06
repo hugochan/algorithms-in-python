@@ -36,10 +36,10 @@ class LazyPrimMST(object):
         return self.mst
 
     def total_weight(self):
-        total_w = 0.0
+        totalWeight = 0.0
         for e in self.edges():
-            total_w += e.weight
-        return total_w
+            totalWeight += e.weight
+        return totalWeight
 
 
 class MinPQ(object):
