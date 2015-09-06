@@ -7,7 +7,7 @@ class LazyPrimMST(object):
     def __init__(self, G):
         super(LazyPrimMST, self).__init__()
         self.G = G
-        self.marked = [0 for i in xrange(G.Vcount())] # nodes of mst
+        self.marked = [0 for i in xrange(self.G.Vcount())] # nodes of mst
         self.mst = deque() # edges of mst
         self.pq = MinPQ() # cross-cutting edge
 
