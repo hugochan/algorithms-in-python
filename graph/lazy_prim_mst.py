@@ -41,7 +41,6 @@ class LazyPrimMST(object):
             totalWeight += e.weight
         return totalWeight
 
-
 class MinPQ(object):
     """minimal priority queue"""
     def __init__(self):
