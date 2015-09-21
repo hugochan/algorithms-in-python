@@ -34,7 +34,7 @@ class KosarajuSCC(object):
 if __name__ == '__main__':
     from digraph import Digraph
     g = Digraph(5)
-    g.read_file('mini_graph.txt')
+    g.read_file('data/mini_graph.txt')
     scc = KosarajuSCC(g)
     print scc.get_count()
     print scc.strongly_connected(2, 1)

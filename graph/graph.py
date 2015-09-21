@@ -68,7 +68,7 @@ class Graph(object):
 
 if __name__ == '__main__':
     g = Graph(13)
-    g.read_file('tiny_graph.txt')
+    g.read_file('data/tiny_graph.txt')
     print g.adj
     print g.max_degree()
     print g.avg_degree()

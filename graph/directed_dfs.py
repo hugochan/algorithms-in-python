@@ -24,7 +24,7 @@ class DirectedDFS(object):
 if __name__ == '__main__':
     from digraph import Digraph
     g = Digraph(5)
-    g.read_file('tiny_digraph.txt')
+    g.read_file('data/tiny_digraph.txt')
     DFS = DirectedDFS(g, 0)
     print DFS.marked
     print DFS.count

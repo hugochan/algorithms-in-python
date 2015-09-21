@@ -40,7 +40,7 @@ class DepthFirstPath(object):
 if __name__ == '__main__':
     from graph import Graph
     g = Graph(5)
-    g.read_file('mini_graph.txt')
+    g.read_file('data/mini_graph.txt')
     DFS = DepthFirstPath(g, 0)
     print DFS.marked
     print DFS.count

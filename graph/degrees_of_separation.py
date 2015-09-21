@@ -26,4 +26,4 @@ def DegreesOfSeparation(file_in, sp, source):
         print 'Not connected'
 
 if __name__ == '__main__':
-    DegreesOfSeparation('symbol_graph.txt', ' ', 'JFK')
+    DegreesOfSeparation('data/symbol_graph.txt', ' ', 'JFK')

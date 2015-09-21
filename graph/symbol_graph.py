@@ -46,7 +46,7 @@ class SymbolGraph(object):
         return self.g
 
 if __name__ == '__main__':
-    sg = SymbolGraph('symbol_graph.txt', ' ')
+    sg = SymbolGraph('data/symbol_graph.txt', ' ')
     print sg.contains('JFK')
     print sg.index('JFK')
     print sg.st

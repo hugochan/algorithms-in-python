@@ -35,7 +35,7 @@ class DepthFirstOrder(object):
 if __name__ == '__main__':
     from digraph import Digraph
     g = Digraph(5)
-    g.read_file('tiny_digraph.txt')
+    g.read_file('data/tiny_digraph.txt')
     DFO = DepthFirstOrder(g)
     pre = DFO.get_pre()
     post = DFO.get_post()

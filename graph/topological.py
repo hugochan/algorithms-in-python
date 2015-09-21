@@ -23,7 +23,7 @@ class Topological(object):
 if __name__ == '__main__':
     from digraph import Digraph
     g = Digraph(5)
-    g.read_file('tiny_digraph.txt')
+    g.read_file('data/tiny_digraph.txt')
     topo = Topological(g)
     print topo.is_DAG()
     order = topo.get_order()

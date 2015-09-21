@@ -54,7 +54,7 @@ class Digraph(object):
 
 if __name__ == '__main__':
     g = Digraph(13)
-    g.read_file('tiny_graph.txt')
+    g.read_file('data/tiny_graph.txt')
     print g.adj
     print g.to_string()
     print g.reverse().to_string()

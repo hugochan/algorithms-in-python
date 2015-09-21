@@ -134,7 +134,7 @@ class IndexMinPQ(object):
 if __name__ == '__main__':
     from edge_weighted_graph import EdgeWeightedGraph
     ewg = EdgeWeightedGraph(8)
-    ewg.read_file("tinyEWG.txt")
+    ewg.read_file("data/tinyEWG.txt")
     mst = PrimMST(ewg)
     for each in mst.edges():
         print each.v, each.w, each.weight

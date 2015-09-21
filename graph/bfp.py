@@ -42,7 +42,7 @@ class BreadthFirstPath(object):
 if __name__ == '__main__':
     from graph import Graph
     g = Graph(6)
-    g.read_file('micro_graph.txt')
+    g.read_file('data/micro_graph.txt')
     BFS = BreadthFirstPath(g, 0)
     print BFS.marked
     print BFS.path_to(4)

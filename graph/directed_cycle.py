@@ -39,7 +39,7 @@ class DirectedCycle(object):
 if __name__ == '__main__':
     from digraph import Digraph
     g = Digraph(5)
-    g.read_file('tiny_digraph.txt')
+    g.read_file('data/tiny_digraph.txt')
     dc = DirectedCycle(g)
     print dc.has_cycle()
     print dc.cycle

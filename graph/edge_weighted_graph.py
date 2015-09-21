@@ -84,5 +84,5 @@ class EdgeWeightedGraph(object):
 
 if __name__ == '__main__':
     ewg = EdgeWeightedGraph(8)
-    ewg.read_file("tinyEWG.txt")
+    ewg.read_file("data/tinyEWG.txt")
     print [x.weight for x in ewg.edges()]
